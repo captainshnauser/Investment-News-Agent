@@ -1,0 +1,32 @@
+name: news-agent
+on:
+  schedule:
+    - cron:  '30 11 * * *'       # 07:30 ET = 11:30 UTC
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install pyyaml
+      - run: python news_agent.py --max-items 15 --json-out output/latest.json
+      - uses: actions/upload-artifact@v4
+        with: { name: wrap-json, path: output/latest.json }
+
+      # OPTIONAL: email via SendGrid (requires SENDGRID_KEY secret)
+      # - name: Email wrap
+      #   if: ${{ secrets.SENDGRID_KEY != '' }}
+      #   uses: dawidd6/action-send-mail@v3
+      #   with:
+      #     server_address: smtp.sendgrid.net
+      #     server_port: 587
+      #     username: apikey
+      #     password: ${{ secrets.SENDGRID_KEY }}
+      #     subject: "Daily Market Wrap"
+      #     to:  your@email.com
+      #     from: News Agent <alerts@yourdomain.com>
+      #     html_body: |
+      #       <pre>${{ steps.prepare.outputs.wrap_html }}</pre>
