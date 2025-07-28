@@ -1,0 +1,17 @@
+# Feeds – add/remove freely
+feeds:
+  - https://feeds.a.dj.com/rss/RSSMarketsMain.xml          # WSJ Markets
+  - https://www.federalreserve.gov/feeds/press_all.xml     # Fed PRs
+  - https://www.bls.gov/feed/bls_latest.rss                # BLS releases
+  - http://feeds.reuters.com/reuters/marketsNews           # Reuters Markets
+  - https://seekingalpha.com/sector/transcripts.xml        # SA transcripts
+  - https://feeds.megaphone.fm/BLM1892394744               # Bloomberg Tech
+  - https://www.reddit.com/r/wallstreetbets.rss            # WSB
+
+# Keyword buckets for simple classification
+keywords:
+  macro:  [federal reserve, fomc, cpi, inflation, gdp, unemployment, opec]
+  earn:   [earnings, eps, guidance, beats, misses, q1, q2, q3, q4]
+  tech:   [ai, chip, quantum, 5g, cloud, cybersecurity, semicon]
+  meme:   [yolo, tendies, meme, squeeze, to the moon, diamond hands]
+  high:   [beats, misses, surprise, short squeeze]
